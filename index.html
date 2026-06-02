@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Science & Society in an Age of Disruption — Chile–Germany WG 2027</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy:      #0d1b2a;
+      --blue:      #1b4b82;
+      --mid-blue:  #2563a8;
+      --accent:    #c8392b;
+      --gold:      #d4a017;
+      --green:     #2e7d32;
+      --light-bg:  #f5f7fa;
+      --border:    #d8dde6;
+      --text:      #1a1a2e;
+      --muted:     #5a6272;
+      --white:     #ffffff;
+      --radius:    10px;
+      --shadow:    0 2px 16px rgba(0,0,0,.08);
+      --shadow-lg: 0 8px 40px rgba(0,0,0,.13);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); line-height: 1.7; }
+    a { color: var(--mid-blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.25; }
+    h1 { font-size: clamp(2rem, 5vw, 3.4rem); }
+    h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 1rem; }
+    p + p { margin-top: .9rem; }
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 1.5rem; }
+    .section { padding: 5rem 0; }
+    .section--alt { background: var(--light-bg); }
+    .section-label { font-family: 'Inter', sans-serif; font-size: .75rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--mid-blue); margin-bottom: .5rem; }
+    .section-divider { width: 48px; height: 3px; background: var(--accent); margin: .8rem 0 2rem; }
+
+    /* ─── Nav ─── */
+    #nav { position: sticky; top: 0; z-index: 100; background: rgba(13,27,42,.97); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(255,255,255,.07); }
+    #nav .inner { display: flex; align-items: center; justify-content: space-between; height: 60px; padding: 0 1.5rem; max-width: 1120px; margin: 0 auto; }
+    .nav-logo { font-family: 'Playfair Display', serif; color: var(--white); font-style: italic; font-size: .95rem; }
+    .nav-logo span { color: var(--gold); font-style: normal; font-weight: 700; }
+    nav ul { display: flex; gap: 1.6rem; list-style: none; }
+    nav a { color: rgba(255,255,255,.72); font-size: .83rem; font-weight: 500; letter-spacing: .02em; transition: color .2s; }
+    nav a:hover { color: var(--white); text-decoration: none; }
+
+    /* ─── Hero ─── */
+    #hero { background: linear-gradient(140deg, var(--navy) 0%, #152540 55%, #1c3860 100%); color: var(--white); padding: 7rem 0 5rem; position: relative; overflow: hidden; }
+    #hero::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='40' cy='40' r='.5' fill='rgba(255,255,255,.12)'/%3E%3C/svg%3E") repeat; pointer-events: none; }
+    .hero-badge { display: inline-flex; align-items: center; gap: .5rem; background: rgba(255,255,255,.09); border: 1px solid rgba(255,255,255,.17); border-radius: 999px; padding: .35rem 1rem; font-size: .75rem; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.8rem; }
+    #hero h1 { font-style: italic; margin-bottom: .5rem; }
+    .hero-subtitle { font-family: 'Inter', sans-serif; font-size: 1.15rem; font-weight: 600; color: rgba(255,255,255,.82); margin-bottom: 1.6rem; }
+    .hero-lead { max-width: 680px; color: rgba(255,255,255,.68); font-size: 1rem; line-height: 1.75; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 3rem; }
+    .hero-pi { display: flex; align-items: center; gap: .9rem; }
+    .hero-avatar { width: 50px; height: 50px; border-radius: 50%; border: 2px solid rgba(255,255,255,.28); display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 700; font-family: 'Inter', sans-serif; flex-shrink: 0; }
+    .hero-avatar.cl { background: rgba(200,57,43,.25); color: #f5a89d; }
+    .hero-avatar.de { background: rgba(37,99,168,.3); color: #90bce8; }
+    .hero-pi-info strong { display: block; font-size: .88rem; color: var(--white); }
+    .hero-pi-info span { font-size: .77rem; color: rgba(255,255,255,.55); }
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 3rem; }
+    .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .72rem 1.45rem; border-radius: var(--radius); font-size: .88rem; font-weight: 600; transition: all .2s; border: none; cursor: pointer; }
+    .btn-primary { background: var(--accent); color: var(--white); }
+    .btn-primary:hover { background: #a82e21; text-decoration: none; color: var(--white); }
+    .btn-outline { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,.35); }
+    .btn-outline:hover { background: rgba(255,255,255,.07); text-decoration: none; color: var(--white); }
+
+    /* ─── Keywords strip ─── */
+    #keywords { background: var(--blue); padding: .9rem 0; }
+    #keywords .inner { display: flex; flex-wrap: wrap; gap: .5rem 1rem; align-items: center; justify-content: center; }
+    .kw { font-size: .73rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.68); padding: .22rem .65rem; border: 1px solid rgba(255,255,255,.18); border-radius: 4px; }
+
+    /* ─── Selection criteria banner ─── */
+    .criteria-bar { background: #0f2640; border-top: 1px solid rgba(255,255,255,.05); padding: 1.2rem 0; }
+    .criteria-bar .inner { display: flex; flex-wrap: wrap; gap: .8rem 2rem; justify-content: center; align-items: center; }
+    .criterion { display: flex; align-items: center; gap: .5rem; font-size: .78rem; color: rgba(255,255,255,.55); }
+    .criterion strong { color: var(--gold); font-weight: 700; }
+
+    /* ─── About ─── */
+    .about-grid { display: grid; grid-template-columns: 3fr 2fr; gap: 3.5rem; align-items: start; }
+    .context-boxes { display: flex; flex-direction: column; gap: 1.1rem; }
+    .context-box { border-left: 3px solid var(--mid-blue); padding: .9rem 1.1rem; background: var(--light-bg); border-radius: 0 var(--radius) var(--radius) 0; }
+    .context-box h4 { font-size: .88rem; font-weight: 700; font-family: 'Inter', sans-serif; margin-bottom: .25rem; }
+    .context-box p { font-size: .85rem; color: var(--muted); margin: 0; }
+    .context-box.de { border-color: #3a7bbf; }
+    .context-box.cl { border-color: var(--accent); }
+    .context-box.both { border-color: var(--gold); }
+
+    /* ─── Interdisciplinarity ─── */
+    .disciplines-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: .9rem; }
+    .disc-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem 1rem; text-align: center; box-shadow: var(--shadow); }
+    .disc-icon { font-size: 1.5rem; margin-bottom: .4rem; }
+    .disc-label { font-size: .8rem; font-weight: 700; margin-bottom: .2rem; }
+    .disc-examples { font-size: .73rem; color: var(--muted); line-height: 1.4; }
+    .interdisciplinary-pitch { background: linear-gradient(135deg, #f0f5ff, #f7f0ff); border: 1px solid #c8d8f5; border-radius: var(--radius); padding: 2rem; margin-bottom: 2.5rem; }
+    .interdisciplinary-pitch p { font-size: .95rem; color: var(--text); margin: 0; }
+    .interdisciplinary-pitch p + p { margin-top: .7rem; }
+
+    /* ─── Research pillars ─── */
+    .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .pillar { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem 1.5rem; box-shadow: var(--shadow); transition: transform .2s, box-shadow .2s; }
+    .pillar:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+    .pillar-num { font-size: .72rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; margin-bottom: .7rem; }
+    .pillar:nth-child(1) .pillar-num { color: var(--accent); }
+    .pillar:nth-child(2) .pillar-num { color: var(--mid-blue); }
+    .pillar:nth-child(3) .pillar-num { color: var(--green); }
+    .pillar-icon { font-size: 2rem; margin-bottom: .8rem; }
+    .pillar h3 { margin-bottom: .6rem; font-size: 1.15rem; }
+    .pillar p { font-size: .88rem; color: var(--muted); }
+    .pillar-tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: 1rem; }
+    .tag { font-size: .7rem; font-weight: 600; letter-spacing: .04em; padding: .18rem .52rem; border-radius: 4px; background: var(--light-bg); color: var(--muted); }
+
+    /* ─── Research questions ─── */
+    .rq-list { counter-reset: rq; display: flex; flex-direction: column; gap: 1rem; }
+    .rq { counter-increment: rq; display: flex; gap: 1.2rem; align-items: flex-start; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.2rem 1.4rem; }
+    .rq::before { content: counter(rq, decimal-leading-zero); font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--border); flex-shrink: 0; line-height: 1.1; width: 2rem; }
+    .rq p { font-size: .93rem; margin: 0; }
+
+    /* ─── WG Composition ─── */
+    .composition-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+    .comp-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.3rem 1rem; text-align: center; box-shadow: var(--shadow); }
+    .comp-icon { font-size: 1.6rem; margin-bottom: .5rem; }
+    .comp-title { font-size: .82rem; font-weight: 700; color: var(--text); margin-bottom: .3rem; }
+    .comp-desc { font-size: .75rem; color: var(--muted); line-height: 1.4; }
+
+    /* ─── Team ─── */
+    .pi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3.5rem; }
+    .pi-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+    .pi-bar { height: 5px; }
+    .pi-card.chile .pi-bar { background: linear-gradient(90deg, var(--accent), #e05c4e); }
+    .pi-card.germany .pi-bar { background: linear-gradient(90deg, var(--mid-blue), #4a90d9); }
+    .pi-body { padding: 1.8rem; }
+    .pi-top { display: flex; gap: 1.2rem; align-items: flex-start; margin-bottom: 1.1rem; }
+    .pi-av { width: 72px; height: 72px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; font-family: 'Inter', sans-serif; flex-shrink: 0; }
+    .pi-card.chile .pi-av { background: #fde8e6; color: var(--accent); }
+    .pi-card.germany .pi-av { background: #ddeeff; color: var(--mid-blue); }
+    .pi-role { font-size: .7rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; margin-bottom: .2rem; }
+    .pi-card.chile .pi-role { color: var(--accent); }
+    .pi-card.germany .pi-role { color: var(--mid-blue); }
+    .pi-name { font-size: 1.2rem; font-family: 'Playfair Display', serif; font-weight: 700; }
+    .pi-affil { font-size: .83rem; color: var(--muted); margin-top: .15rem; line-height: 1.4; }
+    .pi-bio { font-size: .87rem; line-height: 1.68; }
+    .pi-links { display: flex; gap: .7rem; margin-top: 1.1rem; flex-wrap: wrap; }
+    .pi-link { font-size: .76rem; font-weight: 600; padding: .28rem .65rem; border-radius: 5px; border: 1px solid var(--border); color: var(--muted); transition: all .15s; }
+    .pi-link:hover { border-color: var(--mid-blue); color: var(--mid-blue); text-decoration: none; }
+
+    /* ─── Participant grid ─── */
+    .participant-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(235px, 1fr)); gap: 1.1rem; }
+    .pcard { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.3rem; box-shadow: var(--shadow); transition: transform .2s; }
+    .pcard:hover { transform: translateY(-2px); }
+    .pav { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 700; font-family: 'Inter', sans-serif; margin-bottom: .8rem; }
+    .pav.cl { background: #fde8e6; color: var(--accent); }
+    .pav.de { background: #ddeeff; color: var(--mid-blue); }
+    .pname { font-weight: 700; font-size: .93rem; margin-bottom: .12rem; }
+    .pinst { font-size: .75rem; color: var(--muted); margin-bottom: .45rem; }
+    .pexpert { font-size: .78rem; line-height: 1.5; }
+    .pcareer { font-size: .7rem; margin-top: .4rem; }
+    .career-tag { display: inline-block; font-size: .65rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: .12rem .45rem; border-radius: 3px; margin-right: .25rem; }
+    .career-tag.ecr { background: #e8f5e9; color: var(--green); }
+    .career-tag.mid { background: #fff8e1; color: #b76d00; }
+    .career-tag.senior { background: #e8eaf6; color: #3949ab; }
+    .flag-line { font-size: .72rem; margin-top: .4rem; color: var(--muted); }
+
+    /* ─── Timeline ─── */
+    .timeline { position: relative; padding-left: 2.5rem; }
+    .timeline::before { content: ''; position: absolute; left: .7rem; top: .6rem; bottom: .6rem; width: 2px; background: var(--border); }
+    .tl-item { position: relative; padding-bottom: 2.2rem; }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-dot { position: absolute; left: -2.1rem; top: .35rem; width: 14px; height: 14px; border-radius: 50%; background: var(--mid-blue); border: 2px solid var(--white); box-shadow: 0 0 0 2px var(--mid-blue); }
+    .tl-date { font-size: .76rem; font-weight: 700; color: var(--mid-blue); letter-spacing: .06em; text-transform: uppercase; }
+    .tl-title { font-weight: 700; margin: .2rem 0; }
+    .tl-desc { font-size: .87rem; color: var(--muted); }
+
+    /* ─── References ─── */
+    .refs-tabs { display: flex; gap: .6rem; margin-bottom: 1.8rem; flex-wrap: wrap; }
+    .refs-tab { padding: .45rem 1rem; border-radius: 999px; font-size: .8rem; font-weight: 600; cursor: pointer; border: 1.5px solid var(--border); color: var(--muted); transition: all .15s; background: var(--white); }
+    .refs-tab.active { background: var(--mid-blue); border-color: var(--mid-blue); color: var(--white); }
+    .refs-tab:hover:not(.active) { border-color: var(--mid-blue); color: var(--mid-blue); }
+    .refs-panel { display: none; }
+    .refs-panel.active { display: flex; flex-direction: column; gap: .85rem; }
+    .ref-item { display: flex; gap: 1.1rem; align-items: flex-start; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.2rem; transition: border-color .15s; }
+    .ref-item:hover { border-color: var(--mid-blue); }
+    .ref-year { font-size: .75rem; font-weight: 800; color: var(--accent); min-width: 34px; padding-top: .1rem; }
+    .ref-year.new { color: var(--green); }
+    .ref-content { flex: 1; }
+    .ref-authors { font-size: .79rem; color: var(--muted); margin-bottom: .12rem; }
+    .ref-title { font-weight: 600; font-size: .9rem; }
+    .ref-venue { font-size: .77rem; color: var(--muted); margin-top: .12rem; font-style: italic; }
+    .ref-actions { display: flex; gap: .4rem; margin-top: .55rem; flex-wrap: wrap; }
+    .rbtn { font-size: .7rem; font-weight: 700; letter-spacing: .04em; padding: .18rem .55rem; border-radius: 4px; border: 1px solid var(--border); color: var(--muted); transition: all .15s; }
+    .rbtn:hover { border-color: var(--mid-blue); color: var(--mid-blue); text-decoration: none; }
+    .rbtn.oa { background: #e8f5e9; border-color: #66bb6a; color: var(--green); }
+    .rbtn.oa:hover { background: #c8e6c9; text-decoration: none; }
+    .rbtn.new { background: #fffde7; border-color: #ffd54f; color: #7a5800; }
+
+    /* ─── Outputs ─── */
+    .outputs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+    .out-item { display: flex; gap: 1rem; align-items: flex-start; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.3rem; }
+    .out-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: .1rem; }
+    .out-title { font-weight: 700; margin-bottom: .2rem; font-size: .95rem; }
+    .out-desc { font-size: .83rem; color: var(--muted); line-height: 1.5; }
+    .out-tag { display: inline-block; margin-top: .5rem; font-size: .68rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: .18rem .5rem; border-radius: 4px; background: var(--light-bg); color: var(--muted); }
+
+    /* ─── SDGs ─── */
+    .sdg-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .sdg-card { border-radius: var(--radius); padding: 2rem 1.5rem; color: var(--white); }
+    .sdg-card:nth-child(1) { background: #c31d23; }
+    .sdg-card:nth-child(2) { background: #f36d25; }
+    .sdg-card:nth-child(3) { background: #19486a; }
+    .sdg-num { font-size: 3rem; font-family: 'Playfair Display', serif; font-weight: 700; line-height: 1; opacity: .55; }
+    .sdg-title { font-weight: 700; margin: .5rem 0 .4rem; }
+    .sdg-desc { font-size: .83rem; opacity: .88; line-height: 1.55; }
+
+    /* ─── Partners ─── */
+    .partners-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; }
+    .partner-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem 1rem; text-align: center; background: var(--white); }
+    .partner-flag { font-size: 1.5rem; margin-bottom: .3rem; }
+    .partner-name { font-size: .8rem; font-weight: 700; line-height: 1.35; }
+    .partner-city { font-size: .7rem; color: var(--muted); margin-top: .15rem; }
+
+    /* ─── Contact ─── */
+    #contact { background: linear-gradient(135deg, var(--navy) 0%, #162c4a 100%); color: var(--white); padding: 5rem 0; text-align: center; }
+    #contact h2 { color: var(--white); }
+    #contact > .container > p { color: rgba(255,255,255,.68); max-width: 600px; margin: .8rem auto 2rem; }
+    .contact-cards { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
+    .cc { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); border-radius: var(--radius); padding: 1.5rem 2rem; min-width: 220px; text-align: left; }
+    .cc-label { font-size: .7rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); margin-bottom: .35rem; }
+    .cc-name { font-weight: 700; font-size: .98rem; }
+    .cc-detail { font-size: .82rem; color: rgba(255,255,255,.55); margin-top: .25rem; }
+    .cc-detail a { color: rgba(255,255,255,.72); }
+
+    /* ─── Footer ─── */
+    footer { background: var(--navy); color: rgba(255,255,255,.4); text-align: center; padding: 1.8rem; font-size: .77rem; line-height: 1.6; }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .pillars-grid, .sdg-grid { grid-template-columns: 1fr; }
+      .pi-grid { grid-template-columns: 1fr; }
+      .outputs-grid { grid-template-columns: 1fr 1fr; }
+      .composition-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 600px) {
+      nav ul { display: none; }
+      .outputs-grid { grid-template-columns: 1fr; }
+      .composition-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Navigation ─────────────────────────────────── -->
+<div id="nav">
+  <div class="inner">
+    <div class="nav-logo">Science &amp; Society <span>·</span> Chile–Germany</div>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#interdisciplinary">Why Interdisciplinary</a></li>
+        <li><a href="#pillars">Research</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#program">Program</a></li>
+        <li><a href="#references">References</a></li>
+        <li><a href="#contact">Join</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<!-- ── Hero ───────────────────────────────────────── -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-badge">🇨🇱 🇩🇪 &nbsp;3rd Chile–Germany Academic Forum · Santiago, April 5–7, 2027</div>
+    <h1>Science and Society<br/>in an Age of Disruption</h1>
+    <p class="hero-subtitle">Knowledge Governance between Chile and Germany</p>
+    <p class="hero-lead">
+      A binational, interdisciplinary working group examining how science–society relations
+      are being reconfigured by artificial intelligence, geopolitical competition, integrity
+      crises, and eroding public trust — and what this means for research cultures, knowledge
+      communication, and science governance across two analytically complementary national contexts.
+    </p>
+    <div class="hero-meta">
+      <div class="hero-pi">
+        <div class="hero-avatar cl">BS</div>
+        <div class="hero-pi-info">
+          <strong>Dr. Bárbara Silva</strong>
+          <span>PI Chile · Pontificia Universidad Católica de Chile</span>
+        </div>
+      </div>
+      <div class="hero-pi">
+        <div class="hero-avatar de">AE</div>
+        <div class="hero-pi-info">
+          <strong>Dr. Alejandro Ecker</strong>
+          <span>PI Germany · Universität Heidelberg · HCIAS</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-primary">Express Interest in Joining</a>
+      <a href="#references" class="btn btn-outline">Open Access Reading List</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Keywords ───────────────────────────────────── -->
+<div id="keywords">
+  <div class="inner">
+    <span class="kw">Knowledge Governance</span>
+    <span class="kw">Science Diplomacy</span>
+    <span class="kw">Research Integrity</span>
+    <span class="kw">Open Science</span>
+    <span class="kw">Science Communication</span>
+    <span class="kw">Research Cultures</span>
+    <span class="kw">AI &amp; Epistemic Authority</span>
+    <span class="kw">Responsible Assessment</span>
+    <span class="kw">Technology Assessment</span>
+    <span class="kw">Global South</span>
+  </div>
+</div>
+
+
+<!-- ── About ──────────────────────────────────────── -->
+<section id="about" class="section">
+  <div class="container">
+    <p class="section-label">About the Working Group</p>
+    <h2>Why this WG, why now?</h2>
+    <div class="section-divider"></div>
+    <div class="about-grid">
+      <div>
+        <p>
+          Contemporary science faces converging disruptions that challenge its institutional
+          architecture, financial sustainability, and social legitimacy: the rapid rise of
+          artificial intelligence in research workflows, intensifying geopolitical competition
+          over knowledge, normative pressure toward open science and responsible assessment,
+          and a deepening crisis of public trust in expertise.
+        </p>
+        <p>
+          These challenges are visible in concrete ways — in paper mills and rising retractions,
+          in reproducibility failures and perverse evaluation incentives that reward volume over
+          quality, in communities that reject or distrust scientific interventions, and in
+          political actors who selectively suppress or weaponize scientific evidence.
+        </p>
+        <p>
+          This Working Group builds a structured Chile–Germany collaboration around the three
+          dimensions where the crisis of science–society relations is most acute:
+          <strong>research cultures</strong> under pressure from integrity failures and misaligned
+          incentives; <strong>knowledge communication</strong> strained by distrust and territorial
+          disconnection; and <strong>science governance</strong> destabilized by funding volatility
+          and anti-intellectual narratives.
+        </p>
+        <p>
+          Conceived as a generative starting point, the Forum session will serve as the inaugural
+          meeting of a sustained binational research network — with particular attention to
+          early- and mid-career researchers for whom such cross-national scholarly communities
+          are most formative and hardest to access independently.
+        </p>
+      </div>
+      <div>
+        <div class="context-boxes">
+          <div class="context-box de">
+            <h4>🇩🇪 The German Context</h4>
+            <p>An internationally influential research system with sophisticated traditions in science policy and technology assessment — now navigating AI-driven transformation of research workflows, growing academic precarity, open science mandates, and a geopolitical environment that increasingly securitizes scientific collaboration and repositions research as a strategic asset in global competition.</p>
+          </div>
+          <div class="context-box cl">
+            <h4>🇨🇱 The Chilean Context</h4>
+            <p>A rapidly evolving research system shaped by a recent and significant institutional transformation — a new Ministry of Science and a national research agency — that reflects ambitious public commitments to knowledge governance. Chile navigates persistent asymmetries between fields, regions, and institutions, a relatively low level of public investment in science by international standards, and ongoing tension between global academic norms and societal expectations around territorial relevance and public value.</p>
+          </div>
+          <div class="context-box both">
+            <h4>🤝 Why Compare?</h4>
+            <p>The Chile–Germany pairing is analytically productive, not merely illustrative. Both systems confront analogous challenges from structurally different positions, generating comparative frameworks relevant to research systems globally — especially where crises of integrity, communication, and governance are active, visible, and politically consequential.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Interdisciplinarity ────────────────────────── -->
+<section id="interdisciplinary" class="section section--alt">
+  <div class="container">
+    <p class="section-label">Cross-Disciplinary Design</p>
+    <h2>Why Interdisciplinarity is Central</h2>
+    <div class="section-divider"></div>
+    <div class="interdisciplinary-pitch">
+      <p>
+        The crisis of science–society relations cannot be understood, let alone addressed,
+        from within a single discipline. Integrity failures require sociological and
+        philosophical diagnosis; governance responses require political science and policy
+        analysis; communication breakdowns require communication research and STS; the AI
+        transformation of research requires technology assessment and computational expertise;
+        and the Latin American and Global South dimensions require historians and epistemologists
+        who can situate these challenges in their specific structural contexts.
+      </p>
+      <p>
+        This WG is designed from the outset as a genuinely interdisciplinary space — not
+        one in which disciplines present their findings in parallel, but one in which
+        cross-disciplinary synthesis produces concepts, comparative cases, and research
+        designs that no single field could generate alone. The Forum session format — working
+        sessions, thematic roundtables, comparative case mapping — is built to produce
+        this synthesis.
+      </p>
+    </div>
+    <div class="disciplines-grid">
+      <div class="disc-card">
+        <div class="disc-icon">📜</div>
+        <div class="disc-label">History of Science</div>
+        <div class="disc-examples">Long-run dynamics, science diplomacy, institutional genealogies</div>
+      </div>
+      <div class="disc-card">
+        <div class="disc-icon">🔭</div>
+        <div class="disc-label">STS / Sociology of Science</div>
+        <div class="disc-examples">Knowledge production, valuation, lab studies, research cultures</div>
+      </div>
+      <div class="disc-card">
+        <div class="disc-icon">🏛️</div>
+        <div class="disc-label">Political Science</div>
+        <div class="disc-examples">Science governance, political institutions, comparative policy</div>
+      </div>
+      <div class="disc-card">
+        <div class="disc-icon">📡</div>
+        <div class="disc-label">Communication Research</div>
+        <div class="disc-examples">Public trust, science journalism, digital media ecosystems</div>
+      </div>
+      <div class="disc-card">
+        <div class="disc-icon">⚙️</div>
+        <div class="disc-label">Technology Assessment</div>
+        <div class="disc-examples">AI governance, socio-technical futures, responsible innovation</div>
+      </div>
+      <div class="disc-card">
+        <div class="disc-icon">🎓</div>
+        <div class="disc-label">Higher Education Research</div>
+        <div class="disc-examples">Academic careers, university governance, evaluation reform</div>
+      </div>
+      <div class="disc-card">
+        <div class="disc-icon">🌱</div>
+        <div class="disc-label">Environmental Humanities</div>
+        <div class="disc-examples">Territorial knowledge, socio-environmental conflicts, situated science</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Research Pillars ───────────────────────────── -->
+<section id="pillars" class="section">
+  <div class="container">
+    <p class="section-label">Research Themes</p>
+    <h2>Three Pillars of Inquiry</h2>
+    <div class="section-divider"></div>
+    <div class="pillars-grid">
+      <div class="pillar">
+        <div class="pillar-num">Pillar I</div>
+        <div class="pillar-icon">🔬</div>
+        <h3>Research Cultures Under Pressure</h3>
+        <p>How are integrity failures, evaluation distortions, and perverse incentives reshaping epistemic norms and the everyday practices of researchers — and what do the Chile–Germany divergences reveal about systemic factors?</p>
+        <div class="pillar-tags">
+          <span class="tag">Research Integrity</span>
+          <span class="tag">Responsible Assessment</span>
+          <span class="tag">Academic Careers</span>
+          <span class="tag">Bibliometrics</span>
+          <span class="tag">AI in Research</span>
+          <span class="tag">Reproducibility</span>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">Pillar II</div>
+        <div class="pillar-icon">📡</div>
+        <h3>Knowledge Communication &amp; Public Trust</h3>
+        <p>How are universities and researchers navigating distrust, territorial disconnection, and the challenge of translating knowledge across social, linguistic, and political boundaries — including in Latin American contexts where research institutions may be perceived as extractive or disconnected?</p>
+        <div class="pillar-tags">
+          <span class="tag">Science Communication</span>
+          <span class="tag">Misinformation</span>
+          <span class="tag">Territorial Knowledge</span>
+          <span class="tag">Global South</span>
+          <span class="tag">Expertise &amp; Publics</span>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">Pillar III</div>
+        <div class="pillar-icon">⚖️</div>
+        <h3>Science Governance &amp; Legitimacy</h3>
+        <p>How should research systems respond when political actors instrumentalize or suppress scientific evidence, when funding volatility undermines autonomy, and when AI transforms epistemic authority — including in recently reformed systems like Chile's?</p>
+        <div class="pillar-tags">
+          <span class="tag">Science Policy</span>
+          <span class="tag">Science Diplomacy</span>
+          <span class="tag">AI Governance</span>
+          <span class="tag">Open Science</span>
+          <span class="tag">Geopolitics of Knowledge</span>
+          <span class="tag">ANID Reform</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Research Questions ─────────────────────────── -->
+<section id="questions" class="section section--alt">
+  <div class="container" style="max-width:820px;">
+    <p class="section-label">Guiding Questions</p>
+    <h2>Research Questions</h2>
+    <div class="section-divider"></div>
+    <p style="max-width:780px; margin-bottom:2rem; font-size:.93rem; color:var(--muted); line-height:1.7;">
+      The following questions are transversal to the three research pillars and do not exhaust
+      the intellectual scope of the Working Group. They are offered as shared anchors for dialogue —
+      not as boundaries for participation. The Forum sessions are explicitly designed to welcome
+      new contributions, complementary perspectives, and empirical concerns that participants
+      bring from their own disciplinary and geographical contexts.
+    </p>
+    <div class="rq-list">
+      <div class="rq"><p>How are integrity crises — from retractions and paper mills to reproducibility failures — reshaping research cultures and institutional credibility in Chile and Germany, and what do divergences reveal about systemic and contextual factors?</p></div>
+      <div class="rq"><p>How do evaluation frameworks and incentive structures interact with researchers' epistemic values and career trajectories — and what reforms are generating meaningful change versus symbolic compliance?</p></div>
+      <div class="rq"><p>How can knowledge communication practices rebuild trust among communities that perceive researchers as disconnected, extractive, or politically complicit — including in socio-environmental contexts specific to Chile and other Latin American cases?</p></div>
+      <div class="rq"><p>When political actors selectively suppress or instrumentalize scientific evidence, what forms of institutional and communicative resistance are available to research communities, and how do these differ between recently reformed systems and established ones?</p></div>
+      <div class="rq"><p>How is AI transforming epistemic authority and research workflows — and what governance frameworks can preserve the integrity, accessibility, and social value of knowledge production across asymmetric national contexts?</p></div>
+      <div class="rq"><p>What forms of science diplomacy and international cooperation remain viable — and normatively desirable — under conditions of geopolitical competition, knowledge nationalism, and post-pandemic institutional fragility?</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WG Composition ─────────────────────────────── -->
+<section id="composition" class="section">
+  <div class="container">
+    <p class="section-label">Group Design Principles</p>
+    <h2>Composition Commitments</h2>
+    <div class="section-divider"></div>
+    <p style="max-width:700px; margin-bottom:2rem; color:var(--muted); font-size:.93rem;">
+      Six commitments structure the Working Group's composition to ensure discussions are
+      as rich, equitable, and intellectually productive as possible.
+    </p>
+    <div class="composition-grid">
+      <div class="comp-card">
+        <div class="comp-icon">🎓</div>
+        <div class="comp-title">PhD Researchers</div>
+        <div class="comp-desc">Doctoral researchers are embedded as full participants. The Forum is a formative space for emerging scholars, not only a venue for established voices.</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-icon">⚖️</div>
+        <div class="comp-title">Gender Balance</div>
+        <div class="comp-desc">Commitment to gender-balanced participation across both delegations, at all career stages and in all roles within the group.</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-icon">📈</div>
+        <div class="comp-title">Career Stage Balance</div>
+        <div class="comp-desc">Deliberate mix of early-career, mid-career, and senior researchers — ensuring mentorship dynamics and generational knowledge transfer within the group.</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-icon">🌎</div>
+        <div class="comp-title">Institutional &amp; Country Balance</div>
+        <div class="comp-desc">Symmetric binational representation across all co-organizing universities — ensuring genuine co-production rather than asymmetric collaboration, and spanning diverse institutional positions.</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-icon">🔀</div>
+        <div class="comp-title">Interdisciplinary &amp; Transdisciplinary Design</div>
+        <div class="comp-desc">Participation is sought across disciplines — and the WG is open to collaboration with non-academic actors from the public sector, private sector, and civil society who engage with the governance and communication of knowledge.</div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-icon">🏅</div>
+        <div class="comp-title">Scientific Rigor</div>
+        <div class="comp-desc">An ineludible commitment: all contributions are expected to meet high standards of scholarly quality, empirical grounding, and methodological reflexivity — regardless of discipline or career stage.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Team ───────────────────────────────────────── -->
+<section id="team" class="section section--alt">
+  <div class="container">
+    <p class="section-label">The Team</p>
+    <h2>Principal Investigators</h2>
+    <div class="section-divider"></div>
+
+    <div class="pi-grid">
+      <!-- Bárbara Silva -->
+      <div class="pi-card chile">
+        <div class="pi-bar"></div>
+        <div class="pi-body">
+          <div class="pi-top">
+            <div class="pi-av">BS</div>
+            <div>
+              <div class="pi-role">🇨🇱 PI Chile</div>
+              <div class="pi-name">Dr. Bárbara Silva</div>
+              <div class="pi-affil">Pontificia Universidad Católica de Chile<br/>Instituto de Historia / College UC<br/>Director of Research and Development, College UC</div>
+            </div>
+          </div>
+          <p class="pi-bio">
+            Bárbara Silva is a historian specializing in the history of science and technology in Chile
+            and contemporary Latin America, with a global perspective. Her research integrates
+            the scientific, political, and cultural dimensions of processes associated with
+            astronomical development, solar energy, seismology, and water governance, situating
+            them within the dynamics of science diplomacy and international scientific collaboration
+            during the twentieth century.
+          </p>
+          <p class="pi-bio" style="margin-top:.6rem;">
+            She is President of STAND (Commission of Science, Technology, and Diplomacy) of the DHST,
+            and Chile's representative to the Division of History of Science and Technology of the
+            International Union of History and Philosophy of Science and Technology (IUHPST). She
+            currently leads two ANID-Fondecyt projects on Cold War scientific collaboration and
+            hydrological internationalism in Chile, and is General Representative of SKLAC (Forum
+            for Science and Knowledge in Latin America and the Caribbean) of the History of Science
+            Society (HSS).
+          </p>
+          <div class="pi-links">
+            <a href="https://historia.uc.cl/planta-academica/planta-ordinaria/2415-silva-barbara" class="pi-link" target="_blank">Institutional Profile</a>
+            <a href="https://scholar.google.com/citations?hl=en&user=hCZA6LcAAAAJ" class="pi-link" target="_blank">Google Scholar</a>
+            <a href="https://college.uc.cl/academicas-y-academicos/barbara-silva-avaria/" class="pi-link" target="_blank">College UC</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Alejandro Ecker -->
+      <div class="pi-card germany">
+        <div class="pi-bar"></div>
+        <div class="pi-body">
+          <div class="pi-top">
+            <div class="pi-av">AE</div>
+            <div>
+              <div class="pi-role">🇩🇪 PI Germany</div>
+              <div class="pi-name">Dr. Alejandro Ecker</div>
+              <div class="pi-affil">Heidelberg Center for Ibero-American Studies (HCIAS)<br/>Faculty of Economics and Social Sciences<br/>Universität Heidelberg</div>
+            </div>
+          </div>
+          <p class="pi-bio">
+            Alejandro Ecker is a political scientist and Junior Professor of Politics and Communication
+            in Ibero-America at the Heidelberg Center for Ibero-American Studies. His research analyses
+            political decision-making in Europe and Latin America in comparative perspective, combining
+            observational data with experimental and machine learning methods. His current projects
+            address intra-party politics, political communication, and the public negotiation of justice
+            in sustainability transitions in Latin America and the Caribbean (JuTSy project, funded by DFG,
+            with HCE Heidelberg).
+          </p>
+          <p class="pi-bio" style="margin-top:.6rem;">
+            He brings to the WG expertise in comparative political institutions, political communication
+            in Ibero-America, and quantitative methods for studying elite–citizen interactions. At HCIAS
+            he currently teaches "Artificial Intelligence for Open Science," connecting his political science
+            perspective to the governance dimensions of the knowledge production transformation. He holds
+            a PhD from the University of Vienna and has held positions at Mannheim, Vienna, and Hopkins.
+          </p>
+          <div class="pi-links">
+            <a href="https://www.hcias.uni-heidelberg.de/en/about-us/people-a-z/alejandro-ecker" class="pi-link" target="_blank">Institutional Profile</a>
+            <a href="https://scholar.google.com/citations?user=vNe2KegAAAAJ&hl=en" class="pi-link" target="_blank">Google Scholar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Participants -->
+    <p class="section-label" style="margin-top:.5rem;">Potential Participants</p>
+    <h3 style="font-size:1.4rem; margin-bottom:1rem; font-family:'Playfair Display',serif;">Participant Constellation</h3>
+    <p style="max-width:760px; margin-bottom:2rem; font-size:.9rem; color:var(--muted); line-height:1.7;">
+      The researchers listed below have been identified as potential participants on the basis of
+      their research profiles and their complementarity with the WG's three pillars. A number of
+      invitations are already underway; others are identified but pending first contact. Open slots
+      reflect the WG's commitment to reaching a group of 14 participants that is balanced by
+      career stage, gender, institution, and country — and that actively includes doctoral researchers.
+    </p>
+    <div class="participant-grid">
+
+      <div class="pcard">
+        <div class="pav cl">AE</div>
+        <div class="pname">Dr. Alejandro Espinosa-Rada</div>
+        <div class="pinst">Pontificia Universidad Católica de Chile</div>
+        <div class="pexpert">Sociology of science, knowledge networks, scientometrics, multilevel research systems.</div>
+        <div class="pcareer"><span class="career-tag mid">Mid-career</span></div>
+        <div class="flag-line">🇨🇱 Chile</div>
+      </div>
+
+      <div class="pcard">
+        <div class="pav cl">AU</div>
+        <div class="pname">Dr. Anahí Urquiza</div>
+        <div class="pinst">Universidad de Chile</div>
+        <div class="pexpert">Transdisciplinarity, sustainability transformations, science–society interfaces, STS.</div>
+        <div class="pcareer"><span class="career-tag senior">Senior</span></div>
+        <div class="flag-line">🇨🇱 Chile</div>
+      </div>
+
+      <div class="pcard">
+        <div class="pav cl">KV</div>
+        <div class="pname">Dr. Katia Valenzuela</div>
+        <div class="pinst">Universidad de Concepción</div>
+        <div class="pexpert">Critical sociology, socio-environmental conflicts, situated knowledge, sustainability governance.</div>
+        <div class="pcareer"><span class="career-tag mid">Mid-career</span></div>
+        <div class="flag-line">🇨🇱 Chile</div>
+      </div>
+
+      <div class="pcard">
+        <div class="pav cl">RT</div>
+        <div class="pname">Dr. Robinson Torres</div>
+        <div class="pinst">Universidad de Concepción</div>
+        <div class="pexpert">Territorial knowledge, environmental humanities, community relations with research institutions.</div>
+        <div class="pcareer"><span class="career-tag mid">Mid-career</span></div>
+        <div class="flag-line">🇨🇱 Chile</div>
+      </div>
+
+      <div class="pcard">
+        <div class="pav cl">JL</div>
+        <div class="pname">Prof. Juan Larraín</div>
+        <div class="pinst">Pontificia Universidad Católica de Chile</div>
+        <div class="pexpert">Philosophy and ethics of science, virtue epistemology and research ethics, science–faith–society interfaces. Director, Instituto de Éticas Aplicadas UC. Former Vice-Rector of Research, UC Chile.</div>
+        <div class="pcareer"><span class="career-tag senior">Senior</span></div>
+        <div class="flag-line">🇨🇱 Chile</div>
+      </div>
+
+      <div class="pcard">
+        <div class="pav de">KS</div>
+        <div class="pname">Prof. Kathia Serrano-Velarde</div>
+        <div class="pinst">Universität Heidelberg</div>
+        <div class="pexpert">Higher education governance, university reform, academic professions, knowledge valorization in Europe.</div>
+        <div class="pcareer"><span class="career-tag senior">Senior</span></div>
+        <div class="flag-line">🇩🇪 Germany</div>
+      </div>
+
+      <div class="pcard">
+        <div class="pav de">AS</div>
+        <div class="pname">Dr. Arno Simons</div>
+        <div class="pinst">TU Berlin</div>
+        <div class="pexpert">Sociology of science, science communication, open science, research organizations and infrastructure.</div>
+        <div class="pcareer"><span class="career-tag mid">Mid-career</span></div>
+        <div class="flag-line">🇩🇪 Germany</div>
+      </div>
+
+      <div class="pcard">
+        <div class="pav de">SM</div>
+        <div class="pname">Prof. Sabine Maasen</div>
+        <div class="pinst">Universität Hamburg</div>
+        <div class="pexpert">Science studies, innovation research, expertise and valuation, governance of behavioral sciences.</div>
+        <div class="pcareer"><span class="career-tag senior">Senior</span></div>
+        <div class="flag-line">🇩🇪 Germany</div>
+      </div>
+
+      <div class="pcard">
+        <div class="pav de">LN</div>
+        <div class="pname">Dr. Linda Nierling</div>
+        <div class="pinst">KIT</div>
+        <div class="pexpert">Technology assessment, digital transformation, responsible innovation, AI and societal impact.</div>
+        <div class="pcareer"><span class="career-tag mid">Mid-career</span></div>
+        <div class="flag-line">🇩🇪 Germany</div>
+      </div>
+
+      <div class="pcard">
+        <div class="pav de">AG</div>
+        <div class="pname">Prof. Armin Grunwald</div>
+        <div class="pinst">KIT</div>
+        <div class="pexpert">Philosophy and ethics of technology, participatory technology assessment, AI governance frameworks.</div>
+        <div class="pcareer"><span class="career-tag senior">Senior</span></div>
+        <div class="flag-line">🇩🇪 Germany</div>
+      </div>
+
+      <div class="pcard">
+        <div class="pav de">CB</div>
+        <div class="pname">Christian Blanco</div>
+        <div class="pinst">Universität Heidelberg · HCIAS</div>
+        <div class="pexpert">Science governance, knowledge politics, and science–society relations in the Chile–Germany context. Brings a comparative perspective rooted in political science and the Latin American research system.</div>
+        <div class="pcareer"><span class="career-tag ecr">Early-career</span><span class="career-tag ecr" style="margin-left:.2rem;">PhD Researcher</span></div>
+        <div class="flag-line">🇨🇱🇩🇪 Chile / Germany</div>
+      </div>
+
+      <!-- Open slots -->
+      <div class="pcard" style="border-style:dashed; background:var(--light-bg);">
+        <div class="pav" style="background:#e8eaf0; color:#9ca3af; font-size:1.2rem;">+</div>
+        <div class="pname" style="color:var(--muted);">Open Slot</div>
+        <div class="pinst" style="color:#b0b8c8;">Chile · Any institution</div>
+        <div class="pexpert" style="color:#b0b8c8;">Researcher working on knowledge governance, science communication, or research integrity from a Chilean institutional context.</div>
+        <div class="flag-line"><a href="#contact">→ Express interest</a></div>
+      </div>
+
+      <div class="pcard" style="border-style:dashed; background:var(--light-bg);">
+        <div class="pav" style="background:#e8eaf0; color:#9ca3af; font-size:1.2rem;">+</div>
+        <div class="pname" style="color:var(--muted);">Open Slot</div>
+        <div class="pinst" style="color:#b0b8c8;">Germany · TU Berlin / Hamburg</div>
+        <div class="pexpert" style="color:#b0b8c8;">Researcher in science communication, open science, or STS — connecting TU Berlin or Hamburg expertise to the WG's comparative agenda.</div>
+        <div class="flag-line"><a href="#contact">→ Express interest</a></div>
+      </div>
+
+      <div class="pcard" style="border-style:dashed; background:var(--light-bg);">
+        <div class="pav" style="background:#e8eaf0; color:#9ca3af; font-size:1.2rem;">+</div>
+        <div class="pname" style="color:var(--muted);">Open Slot</div>
+        <div class="pinst" style="color:#b0b8c8;">PhD / Early-career · Any country</div>
+        <div class="pexpert" style="color:#b0b8c8;">Doctoral or early-career researcher working at the intersection of the WG's three pillars, from any co-organizing university.</div>
+        <div class="flag-line"><a href="#contact">→ Express interest</a></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ── Program ────────────────────────────────────── -->
+<section id="program" class="section section--alt">
+  <div class="container" style="max-width:700px;">
+    <p class="section-label">Program &amp; Timeline</p>
+    <h2>Roadmap to the Forum and Beyond</h2>
+    <div class="section-divider"></div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">October 2026</div>
+        <div class="tl-title">Group Confirmation</div>
+        <div class="tl-desc">Final participant list confirmed. Introductory materials, shared reading list, and online collaboration space activated.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">December 2026</div>
+        <div class="tl-title">Pre-Forum Virtual Session I — Thematic Anchoring</div>
+        <div class="tl-desc">Each participant presents a 10-minute provocation from ongoing research across the three pillars. Shared vocabulary and thematic anchors established; PhD researchers present alongside senior scholars.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">February 2027</div>
+        <div class="tl-title">Pre-Forum Virtual Session II — Comparative Case Mapping</div>
+        <div class="tl-desc">Identification of parallel empirical cases, complementary data sources, and landscape mapping of relevant funding instruments: DAAD, DFG–ANID joint calls, ANID-FONDECYT, Marie Skłodowska-Curie Actions, Horizon Europe partnerships.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--accent); box-shadow: 0 0 0 2px var(--accent);"></div>
+        <div class="tl-date" style="color:var(--accent);">April 5–7, 2027</div>
+        <div class="tl-title">Forum Session — Santiago, Chile</div>
+        <div class="tl-desc">Intensive in-person working session: short presentations (8–10 min), thematic roundtables organized by pillar, cross-pillar synthesis session, and a closing roadmap session producing a shared research agenda and collaboration agreements.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">April – December 2027</div>
+        <div class="tl-title">Post-Forum Output Phase</div>
+        <div class="tl-desc">Six concrete outputs delivered within twelve months: joint publication, policy white paper, funding concept note, science communication initiative, comparative research agenda, and formalization of the binational research network.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Outputs ────────────────────────────────────── -->
+<section id="outputs" class="section">
+  <div class="container">
+    <p class="section-label">Planned Outputs</p>
+    <h2>Concrete Deliverables</h2>
+    <div class="section-divider"></div>
+    <div class="outputs-grid">
+      <div class="out-item">
+        <div class="out-icon">📄</div>
+        <div>
+          <div class="out-title">Joint Academic Publication</div>
+          <div class="out-desc">A co-authored article or edited collection presenting the comparative Chile–Germany analysis across the three research pillars.</div>
+          <span class="out-tag">12 months</span>
+        </div>
+      </div>
+      <div class="out-item">
+        <div class="out-icon">📋</div>
+        <div>
+          <div class="out-title">Policy White Paper</div>
+          <div class="out-desc">Evidence-based recommendations on science governance addressing integrity, communication, and legitimacy — directed to policymakers and funders in both countries.</div>
+          <span class="out-tag">12 months</span>
+        </div>
+      </div>
+      <div class="out-item">
+        <div class="out-icon">💡</div>
+        <div>
+          <div class="out-title">International Funding Concept Note</div>
+          <div class="out-desc">A collaborative concept note aligned with DAAD, DFG–ANID, Marie Skłodowska-Curie Actions, or Horizon Europe instruments identified during the Forum's mapping session.</div>
+          <span class="out-tag">12 months</span>
+        </div>
+      </div>
+      <div class="out-item">
+        <div class="out-icon">📢</div>
+        <div>
+          <div class="out-title">Science Communication Initiative</div>
+          <div class="out-desc">A public-facing initiative — multilingual essays, digital formats, or media engagements — reaching broader publics whose trust in science is at stake in both countries.</div>
+          <span class="out-tag">12 months</span>
+        </div>
+      </div>
+      <div class="out-item">
+        <div class="out-icon">🌐</div>
+        <div>
+          <div class="out-title">Binational Research Network</div>
+          <div class="out-desc">The inaugural meeting of a sustained Chile–Germany research network, with formal agreements, shared infrastructure, and a mentorship component for early-career members.</div>
+          <span class="out-tag">Ongoing</span>
+        </div>
+      </div>
+      <div class="out-item">
+        <div class="out-icon">🗺️</div>
+        <div>
+          <div class="out-title">Comparative Research Agenda</div>
+          <div class="out-desc">A shared map identifying empirical cases, complementary methods, and fundable collaborative designs across the three pillars — produced at the Forum itself.</div>
+          <span class="out-tag">Forum output</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── References ─────────────────────────────────── -->
+<section id="references" class="section section--alt">
+  <div class="container">
+    <p class="section-label">Open Access Reading List</p>
+    <h2>Key References by Theme</h2>
+    <div class="section-divider"></div>
+
+    <div class="refs-tabs">
+      <button class="refs-tab active" onclick="showTab('t1',this)">🔬 Research Cultures (10)</button>
+      <button class="refs-tab" onclick="showTab('t2',this)">📡 Science Communication (10)</button>
+      <button class="refs-tab" onclick="showTab('t3',this)">⚖️ Science Governance (10)</button>
+    </div>
+
+    <!-- THEME 1: Research Cultures -->
+    <div id="t1" class="refs-panel active">
+
+      <div class="ref-item">
+        <div class="ref-year">2005</div>
+        <div class="ref-content">
+          <div class="ref-authors">Ioannidis, J. P. A.</div>
+          <div class="ref-title">Why Most Published Research Findings Are False</div>
+          <div class="ref-venue">PLOS Medicine, 2(8), e124</div>
+          <div class="ref-actions"><a href="https://doi.org/10.1371/journal.pmed.0020124" class="rbtn oa" target="_blank">OA · DOI</a><span class="rbtn">Research Integrity</span></div>
+        </div>
+      </div>
+
+      <div class="ref-item">
+        <div class="ref-year">2015</div>
+        <div class="ref-content">
+          <div class="ref-authors">Open Science Collaboration</div>
+          <div class="ref-title">Estimating the Reproducibility of Psychological Science</div>
+          <div class="ref-venue">Science, 349(6251), aac4716</div>
+          <div class="ref-actions"><a href="https://doi.org/10.1126/science.aac4716" class="rbtn oa" target="_blank">OA · DOI</a><span class="rbtn">Reproducibility</span></div>
+        </div>
+      </div>
+
+      <div class="ref-item">
+        <div class="ref-year">2015</div>
+        <div class="ref-content">
+          <div class="ref-authors">Hicks, D., Wouters, P., Waltman, L., de Rijcke, S., &amp; Rafols, I.</div>
+          <div class="ref-title">Bibliometrics: The Leiden Manifesto for Research Metrics</div>
+          <div class="ref-venue">Nature, 520(7548), 429–431</div>
+          <div class="ref-actions"><a href="https://doi.org/10.1038/520429a" class="rbtn oa" target="_blank">OA · DOI</a><span class="rbtn">Bibliometrics</span></div>
+        </div>
+      </div>
+
+      <div class="ref-item">
+        <div class="ref-year">2017</div>
+        <div class="ref-content">
+          <div class="ref-authors">Fochler, M. &amp; De Rijcke, S.</div>
+          <div class="ref-title">Implicated in the Indicator: On the Co-Shaping of Indicators, Academic Values, and Careers in the Life Sciences</div>
+          <div class="ref-venue">Engaging Science, Technology, and Society, 3, 155–179</div>
+          <div class="ref-actions"><a href="https://doi.org/10.17351/ests2017.108" class="rbtn oa" target="_blank">OA · DOI</a><span class="rbtn">Research Cultures</span></div>
+        </div>
+      </div>
+
+      <div class="ref-item">
+        <div class="ref-year">2022</div>
+        <div class="ref-content">
+          <div class="ref-authors">Coalition for Advancing Research Assessment (CoARA)</div>
+          <div class="ref-title">Agreement on Reforming Research Assessment</div>
+          <div class="ref-venue">European Commission / CoARA</div>
+          <div class="ref-actions"><a href="https://coara.eu/agreement/the-agreement-full-text/" class="rbtn oa" target="_blank">OA · Full Text</a><span class="rbtn">Responsible Assessment</span></div>
+        </div>
+      </div>
+
+      <div class="ref-item">
+        <div class="ref-year">2023</div>
+        <div class="ref-content">
+          <div class="ref-authors">Birhane, A. et al.</div>
+          <div class="ref-title">Science in the Age of Large Language Models</div>
+          <div class="ref-venue">Nature Reviews Physics, 5, 277–280</div>
+          <div class="ref-actions"><a href="https://doi.org/10.1038/s42254-023-00581-4" class="rbtn oa" target="_blank">OA · DOI</a><span class="rbtn">AI &amp; Research</span></div>
+        </div>
+      </div>
+
+      <div class="ref-item">
+        <div class="ref-year">2024</div>
+        <div class="ref-content">
+          <div class="ref-authors">Bruns, A.</div>
+          <div class="ref-title">CoARA Will Not Save Science from the Tyranny of Administrative Evaluation</div>
+          <div class="ref-venue">arXiv preprint 2408.05587</div>
+          <div class="ref-actions"><a href="https://arxiv.org/abs/2408.05587" class="rbtn oa" target="_blank">OA · arXiv</a><span class="rbtn">Research Assessment</span></div>
+        </div>
+      </div>
+
+      <div class="ref-item">
+        <div class="ref-year new">2025</div>
+        <div class="ref-content">
+          <div class="ref-authors">Borsboom, D. et al.</div>
+          <div class="ref-title">Is There a Reproducibility Crisis? On the Need for Evidence-Based Approaches</div>
+          <div class="ref-venue">Interdisciplinary Science Reviews, 2025</div>
+          <div class="ref-actions"><a href="https://doi.org/10.1080/02698595.2025.2538937" class="rbtn oa" target="_blank">OA · DOI</a><span class="rbtn new">2025</span><span class="rbtn">Reproducibility</span></div>
+        </div>
+      </div>
+
+      <div class="ref-item">
+        <div class="ref-year new">2026</div>
+        <div class="ref-content">
+          <div class="ref-authors">Fuentes, M. V. &amp; Ramírez, F.</div>
+          <div class="ref-title">Open Science and Epistemic Equity: Opportunities and Challenges in the Contemporary Research Ecosystem</div>
+          <div class="ref-venue">PMC / Frontiers in Research Metrics, 2026</div>
+          <div class="ref-actions"><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12699889/" class="rbtn oa" target="_blank">OA · PMC</a><span class="rbtn new">2026</span><span class="rbtn">Open Science</span></div>
+        </div>
+      </div>
+
+      <div class="ref-item">
+        <div class="ref-year new">2026</div>
+        <div class="ref-content">
+          <div class="ref-authors">Van Vaerenbergh, Y., Hazée, S., &amp; Zwienenberg, T. J.</div>
+          <div class="ref-title">Open Science: A Review of Its Effectiveness and Implications for Service Research</div>
+          <div class="ref-venue">Journal of Service Research, 2026</div>
+          <div class="ref-actions"><a href="https://doi.org/10.1177/10946705251338461" class="rbtn oa" target="_blank">OA · DOI</a><span class="rbtn new">2026</span><span class="rbtn">Open Science</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- THEME 2: Science Communication -->
+    <div id="t2" class="refs-panel">
+
+      <div class="ref-item">
+        <div class="ref-year">2019</div>
+        <div class="ref-content">
+          <div class="ref-authors">Scheufele, D. A. &amp; Krause, N. M.</div>
+          <div class="ref-title">Science Audiences, Misinformation, and Fake News</div>
+          <div class="ref-venue">Proceedings of the National Academy of Sciences, 116(16), 7662–7669</div>
+          <div class="ref-actions"><a href="https://doi.org/10.1073/pnas.1805871115" class="rbtn oa" target="_blank">OA · DOI</a><span class="rbtn">Misinformation</span></div>
+        </div>
+      </div>
+
+      <div class="ref-item">
+        <div class="ref-year">2020</div>
+        <div class="ref-content">
+          <div class="ref-authors">Jasanoff, S.</div>
+          <div class="ref-title">The Pandemic's Knowledgeable Silences</div>
+          <div class="ref-venue">Issues in Science and Technology, 36(4), 11–13</div>
+          <div class="ref-actions"><a href="https://issues.org/perspectives-jasanoff-pandemic-knowledge-silences/" class="rbtn oa" target="_blank">OA · Link</a><span class="rbtn">Expertise &amp; Publics</span></div>
+        </div>
+      </div>
+
+      <div class="ref-item">
+        <div class="ref-year">2021</div>
+        <div class="ref-content">
+          <div class="ref-authors">Organista-Sandoval, J. et al.</div>
+          <div class="ref-title">Science Diplomacy in Latin America and the Caribbean: Current Landscape, Challenges, and Future Perspectives</div>
+          <div class="ref-venue">Frontiers in Research Metrics and Analytics, PMC8247908</div>
+          <div class="ref-actions"><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8247908/" class="rbtn oa" target="_blank">OA · PMC</a><span class="rbtn">Latin America</span></div>
+        </div>
+      </div>
+
+      <div class="ref-item">
+        <div class="ref-year">2022</div>
+        <div class="ref-content">
+          <div class="ref-authors">Kahan, D. M.</div>
+          <div class="ref-title">Ideology, Motivated Reasoning, and Cognitive Reflection</div>
+          <div class="ref-venue">Judgment and Decision Making, 8(4), 407–424</div>
+          <div class="ref-actions"><a href="https://ssrn.com/abstract=2182588" class="rbtn oa" target="_blank">OA · SSRN</a><span class="rbtn">Public Trust</span></div>
+        </div>
+      </div>
+
+      <div class="ref-item">
+        <div class="ref-year">2018</div>
+        <div class="ref-content">
+          <div class="ref-authors">Kreimer, P.</div>
+          <div class="ref-title">Science and Society in Latin America: Peripheral Modernities</div>
+          <div class="ref-venue">Routledge (open chapters via ResearchGate)</div>
+          <div class="ref-actions"><a href="https://www.researchgate.net/publication/323416855" class="rbtn oa" target="_blank">OA · ResearchGate</a><span class="rbtn">Global South</span></div>
+        </div>
+      </div>
+
+      <div class="ref-item">
+        <div class="ref-year new">2025</div>
+        <div class="ref-content">
+          <div class="ref-authors">Chan, M. S. et al.</div>
+          <div class="ref-title">Enhancing Trust in Science: Current Challenges and Recommendations for Policymakers, the Scientific Community, Media, and Public</div>
+          <div class="ref-venue">Social and Personality Psychology Compass, 2025</div>
+          <div class="ref-actions"><a href="https://compass.onlinelibrary.wiley.com/doi/full/10.1111/spc3.70104" class="rbtn oa" target="_blank">OA · DOI</a><span class="rbtn new">2025</span><span class="rbtn">Public Trust</span></div>
+        </div>
+      </div>
+
+      <div class="ref-item">
+        <div class="ref-year new">2025</div>
+        <div class="ref-content">
+          <div class="ref-authors">Mahr, D.</div>
+          <div class="ref-title">Science Journalists and Public Trust: Comparative Insights from Germany, Italy, and Lithuania</div>
+          <div class="ref-venue">Journal of Science Communication, 24(05), A01</div>
+          <div class="ref-actions"><a href="https://jcom.sissa.it/article/pubid/JCOM_2405_2025_A01/" class="rbtn oa" target="_blank">OA · JCOM</a><span class="rbtn new">2025</span><span class="rbtn">Science Journalism</span></div>
+        </div>
+      </div>
+
+      <div class="ref-item">
+        <div class="ref-year new">2025</div>
+        <div class="ref-content">
+          <div class="ref-authors">Phogat, P., Rab, S., &amp; Wan, M.</div>
+          <div class="ref-title">Science Communication in the Digital Age: Trends, Gaps, and Interdisciplinary Opportunities</div>
+          <div class="ref-venue">Public Understanding of Science, 2025</div>
+          <div class="ref-actions"><a href="https://doi.org/10.1177/18758789251342896" class="rbtn oa" target="_blank">OA · DOI</a><span class="rbtn new">2025</span><span class="rbtn">Digital Communication</span></div>
+        </div>
+      </div>
+
+      <div class="ref-item">
+        <div class="ref-year new">2026</div>
+        <div class="ref-content">
+          <div class="ref-authors">Systematic Review Authors</div>
+          <div class="ref-title">Public Trust in Science: A Systematic Literature Review</div>
+          <div class="ref-venue">Journal of Academic Ethics, 2026</div>
+          <div class="ref-actions"><a href="https://link.springer.com/article/10.1007/s10805-026-09732-5" class="rbtn oa" target="_blank">OA · Springer</a><span class="rbtn new">2026</span><span class="rbtn">Public Trust</span></div>
+        </div>
+      </div>
+
+      <div class="ref-item">
+        <div class="ref-year new">2026</div>
+        <div class="ref-content">
+          <div class="ref-authors">Multiple Authors</div>
+          <div class="ref-title">The Impact of the COVID-19 Pandemic on Public Trust in Science</div>
+          <div class="ref-venue">PMC / Frontiers in Public Health, 2026</div>
+          <div class="ref-actions"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12478942/" class="rbtn oa" target="_blank">OA · PMC</a><span class="rbtn new">2026</span><span class="rbtn">Trust &amp; Crises</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- THEME 3: Science Governance -->
+    <div id="t3" class="refs-panel">
+
+      <div class="ref-item">
+        <div class="ref-year">2019</div>
+        <div class="ref-content">
+          <div class="ref-authors">Felt, U.</div>
+          <div class="ref-title">Of Timescapes and Knowledgescapes: Rethinking Europe's Knowledge and Innovation Policies</div>
+          <div class="ref-venue">Science and Public Policy, 46(2), 170–179</div>
+          <div class="ref-actions"><a href="https://doi.org/10.1093/scipol/scy062" class="rbtn oa" target="_blank">OA · DOI</a><span class="rbtn">Science Policy</span></div>
+        </div>
+      </div>
+
+      <div class="ref-item">
+        <div class="ref-year">2021</div>
+        <div class="ref-content">
+          <div class="ref-authors">Ruffini, P.-B.</div>
+          <div class="ref-title">The Intergovernmental Panel on Climate Change and the Science-Diplomacy Nexus</div>
+          <div class="ref-venue">Global Policy, 9(S1), 73–77</div>
+          <div class="ref-actions"><a href="https://doi.org/10.1111/1758-5899.12540" class="rbtn oa" target="_blank">OA · DOI</a><span class="rbtn">Science Diplomacy</span></div>
+        </div>
+      </div>
+
+      <div class="ref-item">
+        <div class="ref-year">2022</div>
+        <div class="ref-content">
+          <div class="ref-authors">UNESCO</div>
+          <div class="ref-title">UNESCO Recommendation on Open Science</div>
+          <div class="ref-venue">UNESCO, Paris</div>
+          <div class="ref-actions"><a href="https://doi.org/10.54677/MNMH8546" class="rbtn oa" target="_blank">OA · DOI</a><span class="rbtn">Open Science Policy</span></div>
+        </div>
+      </div>
+
+      <div class="ref-item">
+        <div class="ref-year">2023</div>
+        <div class="ref-content">
+          <div class="ref-authors">Priem, J., Piwowar, H., &amp; Orr, R.</div>
+          <div class="ref-title">OpenAlex: A Fully-Open Index of Scholarly Works, Authors, Venues, Institutions, and Concepts</div>
+          <div class="ref-venue">arXiv preprint 2205.01833</div>
+          <div class="ref-actions"><a href="https://arxiv.org/abs/2205.01833" class="rbtn oa" target="_blank">OA · arXiv</a><span class="rbtn">Knowledge Infrastructure</span></div>
+        </div>
+      </div>
+
+      <div class="ref-item">
+        <div class="ref-year new">2025</div>
+        <div class="ref-content">
+          <div class="ref-authors">Shih, T., Chubb, A., &amp; Cooney-O'Donoghue, D.</div>
+          <div class="ref-title">Processing the Geopolitics of Global Science: Emerging National-Level Advisory Structures</div>
+          <div class="ref-venue">Minerva, 2025</div>
+          <div class="ref-actions"><a href="https://doi.org/10.1177/10283153241307971" class="rbtn oa" target="_blank">OA · DOI</a><span class="rbtn new">2025</span><span class="rbtn">Geopolitics of Science</span></div>
+        </div>
+      </div>
+
+      <div class="ref-item">
+        <div class="ref-year new">2025</div>
+        <div class="ref-content">
+          <div class="ref-authors">OECD</div>
+          <div class="ref-title">Reconfiguring Scientific Co-operation in a Changing Geopolitical Environment (STI Outlook 2025)</div>
+          <div class="ref-venue">OECD Science, Technology and Innovation Outlook 2025</div>
+          <div class="ref-actions"><a href="https://www.oecd.org/en/publications/2025/10/oecd-science-technology-and-innovation-outlook-2025_bae3698d/full-report/reconfiguring-scientific-co-operation-in-a-changing-geopolitical-environment_73f32116.html" class="rbtn oa" target="_blank">OA · OECD</a><span class="rbtn new">2025</span><span class="rbtn">Science Policy</span></div>
+        </div>
+      </div>
+
+      <div class="ref-item">
+        <div class="ref-year new">2025</div>
+        <div class="ref-content">
+          <div class="ref-authors">Multiple Authors</div>
+          <div class="ref-title">When Science Meets Geopolitics: Global AI Research Network Transformation (2000–2025)</div>
+          <div class="ref-venue">Science and Public Policy, 2025</div>
+          <div class="ref-actions"><a href="https://doi.org/10.1093/scipol/scag017" class="rbtn oa" target="_blank">OA · DOI</a><span class="rbtn new">2025</span><span class="rbtn">AI Governance</span></div>
+        </div>
+      </div>
+
+      <div class="ref-item">
+        <div class="ref-year new">2025</div>
+        <div class="ref-content">
+          <div class="ref-authors">Science editorial</div>
+          <div class="ref-title">Rewiring Science Diplomacy</div>
+          <div class="ref-venue">Science, 2025. doi:10.1126/science.aeb4815</div>
+          <div class="ref-actions"><a href="https://www.science.org/doi/10.1126/science.aeb4815" class="rbtn oa" target="_blank">Link · Science</a><span class="rbtn new">2025</span><span class="rbtn">Science Diplomacy</span></div>
+        </div>
+      </div>
+
+      <div class="ref-item">
+        <div class="ref-year new">2026</div>
+        <div class="ref-content">
+          <div class="ref-authors">Multiple Authors</div>
+          <div class="ref-title">An International and Independent Scientific Foundation for AI Governance</div>
+          <div class="ref-venue">Nature Medicine, 2026</div>
+          <div class="ref-actions"><a href="https://doi.org/10.1038/s41591-026-04375-w" class="rbtn oa" target="_blank">OA · DOI</a><span class="rbtn new">2026</span><span class="rbtn">AI Governance</span></div>
+        </div>
+      </div>
+
+      <div class="ref-item">
+        <div class="ref-year new">2026</div>
+        <div class="ref-content">
+          <div class="ref-authors">Multiple Authors</div>
+          <div class="ref-title">How Should AI Knowledge Be Governed? Epistemic Authority, Structural Transparency, and the Case for Open Cognitive Graphs</div>
+          <div class="ref-venue">arXiv preprint 2602.16949, 2026</div>
+          <div class="ref-actions"><a href="https://arxiv.org/abs/2602.16949" class="rbtn oa" target="_blank">OA · arXiv</a><span class="rbtn new">2026</span><span class="rbtn">Epistemic Authority</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── SDGs ───────────────────────────────────────── -->
+<section id="sdgs" class="section">
+  <div class="container">
+    <p class="section-label">Sustainable Development Goals</p>
+    <h2>SDG Alignment</h2>
+    <div class="section-divider"></div>
+    <div class="sdg-grid">
+      <div class="sdg-card">
+        <div class="sdg-num">04</div>
+        <div class="sdg-title">Quality Education</div>
+        <div class="sdg-desc">Addressing the institutional and cultural conditions under which high-quality academic formation takes place — research cultures, career structures, epistemic values, and knowledge governance shaping doctoral and early-career researchers in both countries.</div>
+      </div>
+      <div class="sdg-card">
+        <div class="sdg-num">09</div>
+        <div class="sdg-title">Industry, Innovation &amp; Infrastructure</div>
+        <div class="sdg-desc">AI governance in research, open knowledge infrastructures, science-policy ecosystems, and responsible innovation are central WG concerns — directly bearing on the conditions for scientifically grounded and socially accountable innovation.</div>
+      </div>
+      <div class="sdg-card">
+        <div class="sdg-num">17</div>
+        <div class="sdg-title">Partnerships for the Goals</div>
+        <div class="sdg-desc">Building durable, equitable, and productive Chile–Germany research partnerships — grounded in shared intellectual agendas, genuine co-production, and designed to generate tangible collaborative outputs over the medium and long term.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Contact ────────────────────────────────────── -->
+<section id="contact">
+  <div class="container">
+    <p class="section-label" style="color:var(--gold);">Join the Working Group</p>
+    <h2>Interested in participating?</h2>
+    <p>
+      We welcome scholars whose work engages — from any disciplinary vantage point — with
+      knowledge governance, science communication, research integrity, open science, AI and
+      epistemic authority, technology assessment, or the sustainability of research.
+      Early- and mid-career researchers, and doctoral students, are especially encouraged to reach out.
+    </p>
+    <div class="contact-cards">
+      <div class="cc">
+        <div class="cc-label">🇨🇱 PI Chile</div>
+        <div class="cc-name">Dr. Bárbara Silva</div>
+        <div class="cc-detail">Instituto de Historia, Pontificia Universidad Católica de Chile<br/><a href="mailto:bksilva@uc.cl">bksilva@uc.cl</a></div>
+      </div>
+      <div class="cc">
+        <div class="cc-label">🇩🇪 PI Germany</div>
+        <div class="cc-name">Dr. Alejandro Ecker</div>
+        <div class="cc-detail">Heidelberg Center for Ibero-American Studies (HCIAS)<br/><a href="mailto:alejandro.ecker@uni-heidelberg.de">alejandro.ecker@uni-heidelberg.de</a></div>
+      </div>
+    </div>
+    <p style="margin-top:2.5rem; color:rgba(255,255,255,.45); font-size:.82rem;">
+      Working Group submitted to the <strong style="color:rgba(255,255,255,.65);">3rd Chile–Germany Academic Forum</strong>, Santiago, April 5–7, 2027.
+      A new initiative — founded in 2027 as the inaugural meeting of a sustained binational research network on science, society, and knowledge governance.
+    </p>
+  </div>
+</section>
+
+<!-- ── Footer ─────────────────────────────────────── -->
+<footer>
+  <div class="container">
+    <p><strong style="color:rgba(255,255,255,.55);">Science and Society in an Age of Disruption: Knowledge Governance between Chile and Germany</strong></p>
+    <p>Working Group · 3rd Chile–Germany Academic Forum · Santiago, April 5–7, 2027</p>
+    <p style="margin-top:.5rem;">PI Chile: Dr. Bárbara Silva (PUC Chile) &nbsp;·&nbsp; PI Germany: Dr. Alejandro Ecker (HCIAS, Universität Heidelberg)</p>
+    <p style="margin-top:.5rem;">All references link to open-access sources where available.</p>
+  </div>
+</footer>
+
+<script>
+  function showTab(id, btn) {
+    document.querySelectorAll('.refs-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.refs-tab').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+
+</body>
+</html>
